@@ -7,9 +7,8 @@ public class Aim : MonoBehaviour
 
     private Camera mainCamera;
     public bool isRotatingTowardsMouse;
- 
-    
-
+    private Transform playerParentTransform;
+    public float moveSpeedAiming;
 
     // Move and rotation settings
     public float rotationSpeed = 10f;
@@ -37,6 +36,7 @@ public class Aim : MonoBehaviour
         mainCamera = Camera.main;
         originalSize = mainCamera.orthographicSize;
         targetSize = originalSize - 1f;
+        playerParentTransform = transform.parent;
     }
 
     private void Update()
@@ -52,9 +52,6 @@ public class Aim : MonoBehaviour
             isRotatingTowardsMouse = false;
             isZoomingOut = true;
         }
-
-        
-
     }
 
     private void FixedUpdate()
@@ -71,6 +68,14 @@ public class Aim : MonoBehaviour
         if (isRotatingTowardsMouse)
         {
             RotateTowardsMouse();
+            moveTowardsMouse();
+            PlayerMovement.PlayerMovementScript.enabled = false;
+            PlayerRotation.PlayerRotationScript.enabled = false;
+        }
+        else if (!isRotatingTowardsMouse)
+        {
+            PlayerMovement.PlayerMovementScript.enabled = true;
+            PlayerRotation.PlayerRotationScript.enabled = true;
         }
     }
 
@@ -94,6 +99,32 @@ public class Aim : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
+    void moveTowardsMouse()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Get the cursor position in world space
+                Vector3 cursorPosition = hit.point;
+                cursorPosition.y = playerParentTransform.position.y; // Keep the same Y position as the parent
+
+                // Calculate the direction towards the cursor position
+                Vector3 moveDirection = (cursorPosition - playerParentTransform.position).normalized;
+
+                // Set the movement only on the X and Z axes
+                moveDirection.y = 0f;
+
+                // Move the parent object towards the cursor position
+               playerParentTransform.position += moveDirection * moveSpeedAiming * Time.deltaTime;
+            }
+        }
+    }
+
     private void ZoomIn()
     {
         mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, targetSize, smoothSpeed * Time.deltaTime);

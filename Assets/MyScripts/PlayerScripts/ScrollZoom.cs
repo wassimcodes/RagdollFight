@@ -32,7 +32,7 @@ public class ScrollZoom : MonoBehaviour
         ZoomCamera(zoomDelta);
 
 
-        AimScriptConstrictions();
+     //   AimScriptConstrictions();
     }
 
     private void ZoomCamera(float delta)
@@ -44,15 +44,15 @@ public class ScrollZoom : MonoBehaviour
     }
 
 
-    void AimScriptConstrictions()
-    {
-        if(newSize <= Aim.AimScript.targetSize)
-        {
-            Aim.AimScript.enabled = false;
-        }
-        else
-        {
-            Aim.AimScript.enabled = true;
-        }
-    }
+   // void AimScriptConstrictions()
+   // {
+       // if(newSize <= Aim.AimScript.targetSize)
+     //   {
+           // Aim.AimScript.enabled = false;
+      //  }
+      //  else
+      //  {
+          //  Aim.AimScript.enabled = true;
+      //  }
+   // }
 }

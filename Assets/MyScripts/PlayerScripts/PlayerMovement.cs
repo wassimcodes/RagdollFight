@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    private float moveSpeed;
+    public float moveVelocity; //this is responsible for the player speed.
     private Camera mainCamera;
     private Rigidbody rb;
-    private Animator playerAnimator;
-  
+    public bool isPlayerMoving;
     public static PlayerMovement PlayerMovementScript;
 
 
@@ -24,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         mainCamera = Camera.main;
-
-        playerAnimator = GetComponentInChildren<Animator>();
     }
 
 
@@ -33,15 +31,13 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        //check if the player is pressing any buttons if he does then it will play running animation, if he doesnt it will play the idle animation.
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
-            {
-            playerAnimator.SetBool("isPlayerMoving", true);
-            }
-        else
-        { 
-            playerAnimator.SetBool("isPlayerMoving", false);
+        //change player speed while aiming
+        if (Aim.AimScript.isRotatingTowardsMouse)
+        {
+            moveSpeed = Aim.AimScript.moveSpeedAiming;
         }
+        else
+            moveSpeed = moveVelocity;
     }
 
 
@@ -82,12 +78,15 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(moveHorizontal) > 0f || Mathf.Abs(moveVertical) > 0f)
         {
             // Apply movement to the box's rigidbody
-            rb.velocity = movement * moveSpeed;            
+            isPlayerMoving = true;
+            rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
+
         }
         else
         {
             // Stop the player instantly
-            rb.velocity = Vector3.zero;         
+            isPlayerMoving = false;
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }
 }

@@ -13,6 +13,8 @@ public class RagdollController : MonoBehaviour
     Collider[] ragdollColliders;
     Rigidbody[] limbsRigidbodies;
 
+   
+
     public static RagdollController RagdollControllerScript;
     private void Awake()
     {
@@ -23,9 +25,7 @@ public class RagdollController : MonoBehaviour
     void Start()
     {
         GetRagdollBits();
-        RagdollModeOff();
-
-        
+        RagdollModeOff();   
     }
 
     // Update is called once per frame

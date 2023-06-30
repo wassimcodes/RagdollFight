@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Knocker
+  - Ground
+  - Platform
   layers:
   - Default
   - TransparentFX

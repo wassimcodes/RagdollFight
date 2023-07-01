@@ -1928,6 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVelocity: 9
+  isPlayerMoving: 0
 --- !u!54 &1220679858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3343,7 +3344,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dcaa37e2f1cb68f48a901d0e85e9e1dc, type: 2}
+  - {fileID: 2100000, guid: 29be3f466f9f84a4f92bdc5001770552, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -81,21 +81,21 @@ public class Aim : MonoBehaviour
 
     private void RotateTowardsMouse()
     {
-        // Cast a ray from the camera to the mouse position
+        
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // Check if the ray intersects with a collider
+       
         if (Physics.Raycast(ray, out hit))
         {
-            // Calculate the direction from the object to the hit point
+            
             Vector3 direction = hit.point - transform.position;
-            direction.y = 0f; // Ignore the y-axis component
+            direction.y = 0f; 
 
-            // Calculate the rotation to look at the hit point
+            
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            // Smoothly rotate the object towards the hit point
+            
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }

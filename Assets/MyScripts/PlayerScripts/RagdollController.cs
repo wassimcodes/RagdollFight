@@ -13,7 +13,7 @@ public class RagdollController : MonoBehaviour
     Collider[] ragdollColliders;
     Rigidbody[] limbsRigidbodies;
 
-   
+    public bool isPlayerDead;
 
     public static RagdollController RagdollControllerScript;
     private void Awake()
@@ -25,7 +25,8 @@ public class RagdollController : MonoBehaviour
     void Start()
     {
         GetRagdollBits();
-        RagdollModeOff();   
+        RagdollModeOff();
+        isPlayerDead = false;
     }
 
     // Update is called once per frame
@@ -41,10 +42,17 @@ public class RagdollController : MonoBehaviour
         //this  is what happens when the player collides with a knocker
         if (collision.gameObject.tag == "Knocker")
         {
-            PlayerMovement.PlayerMovementScript.enabled = false;
-            PlayerRotation.PlayerRotationScript.enabled = false;
-            Aim.AimScript.enabled = false;
-            RagdollModeOn();
+            isPlayerDead = true;
+            if(isPlayerDead)
+            {
+                PlayerMovement.PlayerMovementScript.enabled = false;
+                PlayerRotation.PlayerRotationScript.enabled = false;
+                Aim.AimScript.enabled = false;
+                RagdollModeOn();
+                GunsControl.gunsControlScript.lootedPistol.GetComponent<Rigidbody>().isKinematic = false;
+                GunsControl.gunsControlScript.lootedPistol.GetComponent<BoxCollider>().enabled = true;
+            }    
+            
         }
     }
 

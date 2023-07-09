@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rotation:
     m_OverrideState: 0
     m_Value: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 5.14
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -256,7 +256,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 3
   cloudType:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   skyAmbientMode:
     m_OverrideState: 0
@@ -287,14 +287,14 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   skyIntensityMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 12
+    m_Value: 13
   multiplier:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
     m_Value: 1
@@ -314,14 +314,14 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   top:
-    m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 1, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.33490568, g: 0.7642746, b: 1, a: 1}
   middle:
-    m_OverrideState: 0
-    m_Value: {r: 0.3, g: 0.7, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.7424692, g: 0.4292453, b: 1, a: 1}
   bottom:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0.73173547, b: 1, a: 1}
   gradientDiffusion:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1

@@ -25,7 +25,7 @@ public class PlayerRotation : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(movement);
 
             // Apply the rotation to the box's local rotation
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 }

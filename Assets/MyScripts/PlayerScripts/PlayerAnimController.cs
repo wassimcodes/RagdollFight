@@ -6,7 +6,6 @@ public class PlayerAnimController : MonoBehaviour
 {
     private Animator playerAnimator;
 
-
     void Start()
     {
         playerAnimator = gameObject.GetComponentInChildren<Animator>();
@@ -16,7 +15,7 @@ public class PlayerAnimController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        
         //switch between idle and run animations.
         if (Input.GetKey(KeyCode.W) && Aim.AimScript.isRotatingTowardsMouse == false || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
         {
@@ -25,6 +24,16 @@ public class PlayerAnimController : MonoBehaviour
         else
         {
             playerAnimator.SetBool("isPlayerMoving", false);
+        }
+
+        bool isPlayerTakingCover = TakeCover.TakeCoverScript.isTakingCover;
+        if (isPlayerTakingCover)
+        {
+            playerAnimator.SetBool("isPlayerCovering", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isPlayerCovering", false);
         }
 
         //aim animation

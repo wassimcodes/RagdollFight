@@ -61,7 +61,6 @@ public class RagdollController : MonoBehaviour
     {
         ragdollColliders = characterRig.GetComponentsInChildren<Collider>();
         limbsRigidbodies = characterAnimator.GetComponentsInChildren<Rigidbody>();
-
     }
 
     public void RagdollModeOn()
@@ -100,5 +99,6 @@ public class RagdollController : MonoBehaviour
         mainCollider.enabled = true;
         characterRigidbody.isKinematic = false;
     }
+
 
 }

@@ -138,14 +138,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333061893147441216}
-  m_LocalRotation: {x: 0.36354768, y: 0.038040474, z: 0.017672613, w: 0.93063086}
-  m_LocalPosition: {x: -3.03, y: 6.77, z: -7.95}
+  m_LocalRotation: {x: 0.40505534, y: 0.050758675, z: -0.019566298, w: 0.91267246}
+  m_LocalPosition: {x: -1.87, y: 13.23, z: -10.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4263428140444883054}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 42.478, y: 6.513, z: 4.709}
+  m_LocalEulerAnglesHint: {x: 47.847, y: 6.571, z: 0.461}
 --- !u!20 &2736002857485979975
 Camera:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -721,9 +721,10 @@ GameObject:
   - component: {fileID: 8164257744854320125}
   - component: {fileID: 1426225892586721024}
   - component: {fileID: 7070676230015756658}
+  - component: {fileID: 7206591709424924384}
   m_Layer: 0
   m_Name: MainCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -785,7 +786,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8164257744854320125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +812,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587337850271890365}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d0523f97e211271418d1d703e8ea8acf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -823,10 +824,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.57242066
-  m_Height: 1.934248
+  m_Radius: 0.3
+  m_Height: 1.8776512
   m_Direction: 1
-  m_Center: {x: -0.7325972, y: 0.0664053, z: 0.116393656}
+  m_Center: {x: -0.7299958, y: 0.03810692, z: 0.11439061}
 --- !u!114 &7070676230015756658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,10 +840,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7a1e421e98f994c9c0c5fde6fc8b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pistol: {fileID: 0}
+  Pistols:
+  - {fileID: 0}
+  - {fileID: 0}
   lootedPistol: {fileID: 7684504079497313717}
   delay: 0.15
   GunLootKey: 101
+  playerHasPistol: 0
+--- !u!114 &7206591709424924384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587337850271890365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dd6199235e8964faadcc342c279b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeCoverkey: 99
+  isNearContainer: 0
+  isTakingCover: 0
+  Doll: {fileID: 5202049453692133495}
+  rotationSpeed: 0.15
 --- !u!1 &1620259239794784031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2079,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5202049453692133495}
-  m_LocalRotation: {x: -0, y: -0.23520002, z: -0, w: 0.971947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.71, y: -0.12800002, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2103,7 +2124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRotatingTowardsMouse: 0
-  moveSpeedAiming: 4
+  moveSpeedAiming: 5
   rotationSpeed: 10
   smoothSpeed: 15
   targetSize: 6.6
@@ -2120,7 +2141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1fd6fbe365ddc54c88f9bcebb95980e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 25
+  rotationSpeed: 120
 --- !u!114 &5243358241060296720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,7 +2751,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8362775697131376466
 CharacterJoint:
   m_ObjectHideFlags: 0

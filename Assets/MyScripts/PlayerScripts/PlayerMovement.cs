@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement PlayerMovementScript;
 
 
-
     private void Awake()
     {
         PlayerMovementScript = this;
@@ -61,32 +60,24 @@ public class PlayerMovement : MonoBehaviour
     //responsible for the player's local movement
     private void DefaultWalk()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        // Get the local right and forward vectors
-        Vector3 localRight = transform.right;
-        Vector3 localForward = transform.forward;
-
-        // Calculate the movement vector based on local axes
-        Vector3 movement = (localRight * moveHorizontal) + (localForward * moveVertical);
-
-        if (movement.magnitude > .5f)
-            movement.Normalize();
+       
+            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+            float moveVertical = Input.GetAxisRaw("Vertical");
 
         // Check if there is any input to move
         if (Mathf.Abs(moveHorizontal) > 0f || Mathf.Abs(moveVertical) > 0f)
         {
-            // Apply movement to the box's rigidbody
+            // Apply movement to the player's rigidbody
             isPlayerMoving = true;
+            Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+            movement.Normalize();
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
-
         }
         else
         {
             // Stop the player instantly
             isPlayerMoving = false;
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
         }
     }
 }

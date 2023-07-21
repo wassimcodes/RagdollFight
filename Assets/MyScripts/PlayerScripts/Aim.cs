@@ -7,8 +7,8 @@ public class Aim : MonoBehaviour
 
     private Camera mainCamera;
     public bool isRotatingTowardsMouse;
-    private Transform playerParentTransform;
     public float moveSpeedAiming;
+    private Transform parentTransform;
 
     // Move and rotation settings
     public float rotationSpeed = 10f;
@@ -36,7 +36,7 @@ public class Aim : MonoBehaviour
         mainCamera = Camera.main;
         originalSize = mainCamera.orthographicSize;
         targetSize = originalSize - 1f;
-        playerParentTransform = transform.parent;
+        parentTransform = transform.parent;
     }
 
     private void Update()
@@ -52,6 +52,8 @@ public class Aim : MonoBehaviour
             isRotatingTowardsMouse = false;
             isZoomingOut = true;
         }
+
+        
     }
 
     private void FixedUpdate()
@@ -111,18 +113,19 @@ public class Aim : MonoBehaviour
             {
                 // Get the cursor position in world space
                 Vector3 cursorPosition = hit.point;
-                cursorPosition.y = playerParentTransform.position.y; // Keep the same Y position as the parent
+                cursorPosition.y = parentTransform.position.y; // Keep the same Y position as the parent
 
                 // Calculate the direction towards the cursor position
-                Vector3 moveDirection = (cursorPosition - playerParentTransform.position).normalized;
+                Vector3 moveDirection = (cursorPosition - parentTransform.position).normalized;
 
                 // Set the movement only on the X and Z axes
                 moveDirection.y = 0f;
 
                 // Move the parent object towards the cursor position
-               playerParentTransform.position += moveDirection * moveSpeedAiming * Time.deltaTime;
+                parentTransform.position += moveDirection * moveSpeedAiming * Time.deltaTime;
             }
         }
+
     }
 
     private void ZoomIn()

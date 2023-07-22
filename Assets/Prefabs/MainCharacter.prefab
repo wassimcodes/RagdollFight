@@ -758,6 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f50c9a09b5246a4599f757997a87f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   moveVelocity: 8
   isPlayerMoving: 0
 --- !u!54 &9045125378687795316
@@ -863,7 +864,12 @@ MonoBehaviour:
   isNearContainer: 0
   isTakingCover: 0
   Doll: {fileID: 5202049453692133495}
+  dollTransform: {fileID: 8196293877843576946}
   rotationSpeed: 0.15
+  coverSpeedX: -3
+  coverSpeedZ: 20
+  isHorizontalOrigin: 0
+  isHorizontalReversed: 0
 --- !u!1 &1620259239794784031
 GameObject:
   m_ObjectHideFlags: 0

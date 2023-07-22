@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed;
+    public float moveSpeed;
     public float moveVelocity; //this is responsible for the player speed.
     private Camera mainCamera;
-    private Rigidbody rb;
+    Rigidbody rb;
     public bool isPlayerMoving;
     public static PlayerMovement PlayerMovementScript;
-
+   
 
     private void Awake()
     {

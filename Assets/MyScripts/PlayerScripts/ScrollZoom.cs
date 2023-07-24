@@ -16,7 +16,6 @@ public class ScrollZoom : MonoBehaviour
     private void Awake()
     {
         scrollZoomScript = this;
-
     }
 
     
@@ -30,9 +29,6 @@ public class ScrollZoom : MonoBehaviour
     {
         float zoomDelta = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         ZoomCamera(zoomDelta);
-
-
-     //   AimScriptConstrictions();
     }
 
     private void ZoomCamera(float delta)
@@ -43,16 +39,4 @@ public class ScrollZoom : MonoBehaviour
 
     }
 
-
-   // void AimScriptConstrictions()
-   // {
-       // if(newSize <= Aim.AimScript.targetSize)
-     //   {
-           // Aim.AimScript.enabled = false;
-      //  }
-      //  else
-      //  {
-          //  Aim.AimScript.enabled = true;
-      //  }
-   // }
 }

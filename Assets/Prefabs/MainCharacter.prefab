@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6879770089374724806}
   - component: {fileID: 3743492077899930404}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,6 +870,8 @@ MonoBehaviour:
   coverSpeedZ: 20
   isHorizontalOrigin: 0
   isHorizontalReversed: 0
+  isVerticalOrigin: 0
+  isVerticalReversed: 0
 --- !u!1 &1620259239794784031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,7 +2109,7 @@ Animator:
   m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a00f49d4de11cde478b98c15069bd6df, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -2757,7 +2759,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!144 &8362775697131376466
 CharacterJoint:
   m_ObjectHideFlags: 0

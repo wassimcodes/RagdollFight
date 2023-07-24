@@ -19,8 +19,10 @@ public class TakeCover : MonoBehaviour
 
     public bool isHorizontalOrigin; //player cover looking at the camera
     public bool isHorizontalReversed; //player cover looking at the other side
+    public bool isVerticalOrigin; //player cover looking at the camera
+    public bool isVerticalReversed; //player cover looking at the other side
 
- 
+
     private void Awake()
     {
         TakeCoverScript = this;
@@ -46,29 +48,11 @@ public class TakeCover : MonoBehaviour
                 isTakingCover = !isTakingCover; 
             }
         }
-
+        PlayerRotationChecker();
         CoverBehaviour();
 
-        //check player rotation
-        if (dollTransform.localEulerAngles.y < 153 && dollTransform.localEulerAngles.y > 152)
-        {
-            isHorizontalOrigin = true;
-        }
-        else
-        {
-            isHorizontalOrigin = false;
-        }
-        if (dollTransform.localEulerAngles.y < 333 && dollTransform.localEulerAngles.y > 332)
-        {
-            isHorizontalReversed = true;
-        }
-        else
-        {
-            isHorizontalReversed = false;
-        }
-    
-
-}
+       
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -87,6 +71,47 @@ public class TakeCover : MonoBehaviour
         }
     }
 
+    void PlayerRotationChecker()
+    {
+        //check player rotation horizontally
+        if (dollTransform.localEulerAngles.y < 160 && dollTransform.localEulerAngles.y > 140)
+        {
+            isHorizontalOrigin = true;
+        }
+        else
+        {
+            isHorizontalOrigin = false;
+        }
+        if (dollTransform.localEulerAngles.y < 340 && dollTransform.localEulerAngles.y > 330)
+        {
+            isHorizontalReversed = true;
+        }
+        else
+        {
+            isHorizontalReversed = false;
+        }
+
+        //check player rotation vertically
+
+        if (dollTransform.localEulerAngles.y < 250 && dollTransform.localEulerAngles.y > 240)
+        {
+            isVerticalOrigin = true;
+        }
+        else
+        {
+            isVerticalOrigin = false;
+        }
+
+        if (dollTransform.localEulerAngles.y < 69 && dollTransform.localEulerAngles.y > 60)
+        {
+            isVerticalReversed = true;
+        }
+        else
+        {
+            isVerticalReversed = false;
+        }
+    } //checks where the player is rotating when they take a cover.
+
 
     void CoverBehaviour()
     {
@@ -102,11 +127,14 @@ public class TakeCover : MonoBehaviour
         else if (!isTakingCover && GunsControl.gunsControlScript.playerHasPistol == true)
         {
             Aim.AimScript.enabled = true;
+           
+            
         }
         else if (Aim.AimScript.isRotatingTowardsMouse == false && !isTakingCover)
         {
 
             PlayerMovement.PlayerMovementScript.enabled = true;
+            
         }
         if (!isNearContainer)
         {
@@ -115,9 +143,9 @@ public class TakeCover : MonoBehaviour
         
         
        
-    }
+    } //checks what to do when the player is in cover and when they leave the cover.
 
-    void rotateOppositeContainer() //makes the player face the opposite direction of the container.
+    void rotateOppositeContainer() //make the player face the opposite direction of the container.
     {
         if (ContainerCollision != null)
         {
@@ -132,7 +160,7 @@ public class TakeCover : MonoBehaviour
         }   
     }
 
-    void playerCoverMovement()
+    void playerCoverMovement() //make the player move left and right while taking cover.
     {
         if (isHorizontalOrigin || isHorizontalReversed)
         {
@@ -147,7 +175,7 @@ public class TakeCover : MonoBehaviour
         }
         
         //the z movement of the player while taking cover.
-         if ((dollTransform.localEulerAngles.y < 243 && dollTransform.localEulerAngles.y > 242 || dollTransform.localEulerAngles.y < 63 && dollTransform.localEulerAngles.y > 62))
+         if ((isVerticalOrigin || isVerticalReversed))
         {
            
             float verticalInput = Input.GetAxisRaw("Vertical");
@@ -158,15 +186,5 @@ public class TakeCover : MonoBehaviour
             targetPosition.z += localChildPosition.z * movementAmount;
             transform.localPosition = targetPosition;
         }
-
-
-        
-        
-
-
-
-
-    }
-    
-    
+    }    
 }

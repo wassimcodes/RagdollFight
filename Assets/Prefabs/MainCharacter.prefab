@@ -722,6 +722,7 @@ GameObject:
   - component: {fileID: 1426225892586721024}
   - component: {fileID: 7070676230015756658}
   - component: {fileID: 7206591709424924384}
+  - component: {fileID: 1446412907755853011}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Player
@@ -872,6 +873,23 @@ MonoBehaviour:
   isHorizontalReversed: 0
   isVerticalOrigin: 0
   isVerticalReversed: 0
+--- !u!114 &1446412907755853011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587337850271890365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7097ba05435b047a48693701046f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crouchKey: 306
+  newCapsuleHeight: 1.167694
+  newCapsuleCenterY: -0.3168715
+  isCrouching: 0
+  CrouchSpeed: 5
 --- !u!1 &1620259239794784031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2129,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a00f49d4de11cde478b98c15069bd6df, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

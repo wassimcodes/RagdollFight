@@ -19,6 +19,8 @@ public class PlayerAnimController : MonoBehaviour
         
         PlayerMovementAnim();
 
+        PlayerCrouchAnim();
+
         //aim animation
         bool isPlayerAiming = Aim.AimScript.isRotatingTowardsMouse;
         if (isPlayerAiming)
@@ -110,7 +112,7 @@ public class PlayerAnimController : MonoBehaviour
     void PlayerMovementAnim()
     {
         //switch between idle and run animations.
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && !TakeCover.TakeCoverScript.isTakingCover && Aim.AimScript.isRotatingTowardsMouse == false)
+        if (PlayerMovement.PlayerMovementScript.isPlayerMoving && !TakeCover.TakeCoverScript.isTakingCover && Aim.AimScript.isRotatingTowardsMouse == false)
         {
             playerAnimator.SetBool("isPlayerMoving", true);
             
@@ -122,7 +124,22 @@ public class PlayerAnimController : MonoBehaviour
         }
     }
 
-   
-    
+    void PlayerCrouchAnim()
+    {
+        if (Crouch.crouchScript.isCrouching && !PlayerMovement.PlayerMovementScript.isPlayerMoving)
+        {
+            playerAnimator.SetBool("isCrouching", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isCrouching", false);
+        }
+
+        if (Crouch.crouchScript.isCrouching && PlayerMovement.PlayerMovementScript.isPlayerMoving)
+        {
+            playerAnimator.SetBool("isCrouching", true);
+            playerAnimator.SetBool("isPlayerMoving", true);
+        }
+    }
 }
        

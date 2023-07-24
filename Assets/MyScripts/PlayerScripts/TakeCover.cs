@@ -122,7 +122,8 @@ public class TakeCover : MonoBehaviour
             Aim.AimScript.enabled = false;
             rotateOppositeContainer();
             playerCoverMovement();
-            
+            Crouch.crouchScript.isCrouching = false;
+
         }
         else if (!isTakingCover && GunsControl.gunsControlScript.playerHasPistol == true)
         {

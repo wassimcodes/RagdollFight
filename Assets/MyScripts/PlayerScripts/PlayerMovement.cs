@@ -41,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = moveVelocity;
         }
-
-        Debug.Log(moveSpeed);
     }
 
 

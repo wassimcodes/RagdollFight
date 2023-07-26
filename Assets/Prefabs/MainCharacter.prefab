@@ -903,6 +903,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bc7bef60018d243b76d594615df25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRolling: 0
+  rollKey: 306
+  rollDuration: 0.4
+  coolDownRoll: 1
+  rollSpeed: 10
+  canRoll: 0
 --- !u!1 &1620259239794784031
 GameObject:
   m_ObjectHideFlags: 0

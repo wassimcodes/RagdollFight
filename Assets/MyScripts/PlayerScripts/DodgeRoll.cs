@@ -7,8 +7,11 @@ public class DodgeRoll : MonoBehaviour
     public bool isRolling = false;
     public KeyCode rollKey;
     public float rollDuration;
+    [SerializeField] float coolDownRoll;
     [SerializeField] float rollSpeed;
+    [SerializeField] bool canRoll; //to avoid spamming the key
     public static DodgeRoll dodgeRollScript;
+    
 
 
     private void Awake()
@@ -18,13 +21,13 @@ public class DodgeRoll : MonoBehaviour
 
     void Start()
     {
-        
+        canRoll = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(rollKey) && PlayerMovement.PlayerMovementScript.isPlayerMoving)
+        if (Input.GetKey(rollKey) && PlayerMovement.PlayerMovementScript.isPlayerMoving && canRoll)
         {
             isRolling = true;
             Crouch.crouchScript.enabled = false;
@@ -39,6 +42,10 @@ public class DodgeRoll : MonoBehaviour
         yield return new WaitForSeconds(rollDuration);
         isRolling = false;
         Crouch.crouchScript.enabled = true;
+        canRoll = false;
+
+        yield return new WaitForSeconds(coolDownRoll);
+        canRoll = true;
     }
 
     void velocityController()

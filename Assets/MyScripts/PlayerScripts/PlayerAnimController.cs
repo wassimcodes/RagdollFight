@@ -21,6 +21,8 @@ public class PlayerAnimController : MonoBehaviour
 
         PlayerCrouchAnim();
 
+        PlayerDodgeRollAnim();
+
         //aim animation
         bool isPlayerAiming = Aim.AimScript.isRotatingTowardsMouse;
         if (isPlayerAiming)
@@ -140,6 +142,30 @@ public class PlayerAnimController : MonoBehaviour
             playerAnimator.SetBool("isCrouching", true);
             playerAnimator.SetBool("isPlayerMoving", true);
         }
+    }
+
+    void PlayerDodgeRollAnim()
+    {
+
+        if (DodgeRoll.dodgeRollScript.isRolling)
+        {
+            if (PlayerMovement.PlayerMovementScript.isPlayerMoving)
+            {
+                playerAnimator.SetBool("isRolling", true);
+                playerAnimator.SetBool("isPlayerMoving", true);
+            }
+            else if (!PlayerMovement.PlayerMovementScript.isPlayerMoving)
+            {
+                playerAnimator.SetBool("isRolling", false);
+                playerAnimator.SetBool("isPlayerMoving", false);
+            }  
+        }
+
+        else
+        {
+            playerAnimator.SetBool("isRolling", false);
+        }
+        
     }
 }
        

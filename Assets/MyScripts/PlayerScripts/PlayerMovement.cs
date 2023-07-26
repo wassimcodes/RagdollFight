@@ -35,11 +35,14 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = Aim.AimScript.moveSpeedAiming;
             Crouch.crouchScript.isCrouching = false;
+            DodgeRoll.dodgeRollScript.isRolling = false;
         }
-        else if (!Aim.AimScript.isRotatingTowardsMouse && !Crouch.crouchScript.isCrouching)
+        else if (!Aim.AimScript.isRotatingTowardsMouse && !Crouch.crouchScript.isCrouching && !DodgeRoll.dodgeRollScript.isRolling)
         {
             moveSpeed = moveVelocity;
-        }   
+        }
+
+        Debug.Log(moveSpeed);
     }
 
 

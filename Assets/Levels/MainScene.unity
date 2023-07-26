@@ -6761,6 +6761,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5896622127361999069, guid: e9f9c7ab201d03f41b9f5d65721b74e7,
+        type: 3}
+      propertyPath: rollKey
+      value: 306
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896622127361999069, guid: e9f9c7ab201d03f41b9f5d65721b74e7,
+        type: 3}
+      propertyPath: rollSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896622127361999069, guid: e9f9c7ab201d03f41b9f5d65721b74e7,
+        type: 3}
+      propertyPath: rollDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7070676230015756658, guid: e9f9c7ab201d03f41b9f5d65721b74e7,
         type: 3}
       propertyPath: Pistols.Array.data[0]

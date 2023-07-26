@@ -42,6 +42,7 @@ public class Crouch : MonoBehaviour
 
         CapsuleCrouchSettings();
         CrouchVelocityController();
+        crouchController();
     }
 
     void CapsuleCrouchSettings()
@@ -65,10 +66,23 @@ public class Crouch : MonoBehaviour
             PlayerMovement.PlayerMovementScript.moveSpeed = CrouchSpeed;
             
         }
-        else
+        else if (!DodgeRoll.dodgeRollScript.isRolling && !isCrouching)
         {
             float RunningSpeed = PlayerMovement.PlayerMovementScript.moveVelocity;
             PlayerMovement.PlayerMovementScript.moveSpeed = RunningSpeed;
+        }
+    }
+
+    void crouchController()
+    {
+        if (isCrouching)
+        {
+            DodgeRoll.dodgeRollScript.enabled = false;
+        }
+
+        else if (!isCrouching && !TakeCover.TakeCoverScript.isTakingCover)
+        {
+            DodgeRoll.dodgeRollScript.enabled = true;
         }
     }
 }

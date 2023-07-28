@@ -66,11 +66,11 @@ public class Crouch : MonoBehaviour
             PlayerMovement.PlayerMovementScript.moveSpeed = CrouchSpeed;
             
         }
-        else if (!DodgeRoll.dodgeRollScript.isRolling && !isCrouching)
+        else if (!DodgeRoll.dodgeRollScript.isRolling && !isCrouching && !Aim.AimScript.isRotatingTowardsMouse)
         {
-            float RunningSpeed = PlayerMovement.PlayerMovementScript.moveVelocity;
-            PlayerMovement.PlayerMovementScript.moveSpeed = RunningSpeed;
+            PlayerMovement.PlayerMovementScript.moveSpeed = PlayerMovement.PlayerMovementScript.moveVelocity;
         }
+        
     }
 
     void crouchController()

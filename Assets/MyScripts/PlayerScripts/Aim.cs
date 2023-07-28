@@ -70,11 +70,11 @@ public class Aim : MonoBehaviour
         if (isRotatingTowardsMouse)
         {
             RotateTowardsMouse();
-            moveTowardsMouse();
-            PlayerMovement.PlayerMovementScript.enabled = false;
+            //moveTowardsMouse();
             PlayerRotation.PlayerRotationScript.enabled = false;
+   
         }
-        else if (!isRotatingTowardsMouse)
+        else if (!isRotatingTowardsMouse && !Crouch.crouchScript.isCrouching)
         {
             PlayerMovement.PlayerMovementScript.enabled = true;
             PlayerRotation.PlayerRotationScript.enabled = true;
@@ -102,31 +102,23 @@ public class Aim : MonoBehaviour
         }
     }
 
-    void moveTowardsMouse()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+    //void moveTowardsMouse()
+    //{
+    //    if (Input.GetKey(KeyCode.W))
+    //    {
+    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Get the cursor position in world space
-                Vector3 cursorPosition = hit.point;
-                cursorPosition.y = parentTransform.position.y; // Keep the same Y position as the parent
-
-                // Calculate the direction towards the cursor position
-                Vector3 moveDirection = (cursorPosition - parentTransform.position).normalized;
-
-                // Set the movement only on the X and Z axes
-                moveDirection.y = 0f;
-
-                // Move the parent object towards the cursor position
-                parentTransform.position += moveDirection * moveSpeedAiming * Time.deltaTime;
-            }
-        }
-
-    }
+    //        if (Physics.Raycast(ray, out hit))
+    //        {
+    //            Vector3 cursorPosition = hit.point;
+    //            cursorPosition.y = parentTransform.position.y; 
+    //            Vector3 moveDirection = (cursorPosition - parentTransform.position).normalized;
+    //            moveDirection.y = 0f;
+    //            parentTransform.position += moveDirection * moveSpeedAiming * Time.deltaTime;
+    //        }
+    //    }
+    //}
 
     private void ZoomIn()
     {

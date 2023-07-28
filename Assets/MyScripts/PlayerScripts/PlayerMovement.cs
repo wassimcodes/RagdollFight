@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             Crouch.crouchScript.isCrouching = false;
             DodgeRoll.dodgeRollScript.isRolling = false;
         }
-        else if (!Aim.AimScript.isRotatingTowardsMouse && !Crouch.crouchScript.isCrouching && !DodgeRoll.dodgeRollScript.isRolling)
+        else if (!Crouch.crouchScript.isCrouching && !DodgeRoll.dodgeRollScript.isRolling && !Aim.AimScript.isRotatingTowardsMouse)
         {
             moveSpeed = moveVelocity;
         }
@@ -68,10 +68,9 @@ public class PlayerMovement : MonoBehaviour
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");
 
-        // Check if there is any input to move
         if (Mathf.Abs(moveHorizontal) > 0f || Mathf.Abs(moveVertical) > 0f)
         {
-            // Apply movement to the player's rigidbody
+            
             isPlayerMoving = true;
             Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
             movement.Normalize();
@@ -79,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Stop the player instantly
             isPlayerMoving = false;
             rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
         }

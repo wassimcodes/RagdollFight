@@ -827,10 +827,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.59588134
   m_Height: 1.8776512
   m_Direction: 1
-  m_Center: {x: -0.7299958, y: 0.03810692, z: 0.11439061}
+  m_Center: {x: -0.69848967, y: 0.03810692, z: 0.12873319}
 --- !u!114 &7070676230015756658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +868,7 @@ MonoBehaviour:
   Doll: {fileID: 5202049453692133495}
   dollTransform: {fileID: 8196293877843576946}
   rotationSpeed: 0.15
+  leaveCoverDelay: 0.1
   coverSpeedX: -3
   coverSpeedZ: 20
   isHorizontalOrigin: 0

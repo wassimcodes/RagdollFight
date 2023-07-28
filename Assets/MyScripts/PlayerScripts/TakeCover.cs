@@ -12,7 +12,6 @@ public class TakeCover : MonoBehaviour
     private Vector3 InitialDollTransform;
     Collision ContainerCollision;
     [SerializeField] private float rotationSpeed;
-
     public static TakeCover TakeCoverScript;
     public float coverSpeedX;
     public float coverSpeedZ;
@@ -43,7 +42,7 @@ public class TakeCover : MonoBehaviour
     {
         if (isNearContainer)
         {
-            if (Input.GetKeyDown(takeCoverkey) && PlayerMovement.PlayerMovementScript.isPlayerMoving == false)
+            if (Input.GetKeyDown(takeCoverkey) && PlayerMovement.PlayerMovementScript.isPlayerMoving == false && !Aim.AimScript.isRotatingTowardsMouse)
             {
                 isTakingCover = !isTakingCover; 
             }
@@ -123,6 +122,7 @@ public class TakeCover : MonoBehaviour
             rotateOppositeContainer();
             playerCoverMovement();
             Crouch.crouchScript.isCrouching = false;
+            
 
         }
         else if (!isTakingCover && GunsControl.gunsControlScript.playerHasPistol == true)
@@ -133,18 +133,13 @@ public class TakeCover : MonoBehaviour
         }
         else if (Aim.AimScript.isRotatingTowardsMouse == false && !isTakingCover)
         {
-
             PlayerMovement.PlayerMovementScript.enabled = true;
-            
         }
         if (!isNearContainer)
         {
             isTakingCover = false;
         }
-        
-        
-       
-    } //checks what to do when the player is in cover and when they leave the cover.
+    }
 
     void rotateOppositeContainer() //make the player face the opposite direction of the container.
     {

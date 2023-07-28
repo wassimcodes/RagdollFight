@@ -59,7 +59,7 @@ public class DodgeRoll : MonoBehaviour
         }
 
         
-        else if (!Crouch.crouchScript.isCrouching && !isRolling)
+        else if (!Crouch.crouchScript.isCrouching && !isRolling && !Aim.AimScript.isRotatingTowardsMouse)
         {
             PlayerMovement.PlayerMovementScript.moveSpeed = playerRunningSpeed;
         }

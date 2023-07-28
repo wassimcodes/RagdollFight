@@ -28,7 +28,7 @@ public class PlayerAnimController : MonoBehaviour
         if (isPlayerAiming)
         {
             playerAnimator.SetBool("isPlayerAiming", true);
-            if ((Input.GetKey(KeyCode.W)))
+            if ((PlayerMovement.PlayerMovementScript.isPlayerMoving))
             {
                 playerAnimator.SetBool("isPlayerMoving", true);
             }

@@ -27,7 +27,7 @@ public class DodgeRoll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(rollKey) && PlayerMovement.PlayerMovementScript.isPlayerMoving && canRoll)
+        if (Input.GetKey(rollKey) && PlayerMovement.PlayerMovementScript.isPlayerMoving && canRoll && !Aim.AimScript.isRotatingTowardsMouse)
         {
             isRolling = true;
             Crouch.crouchScript.enabled = false;

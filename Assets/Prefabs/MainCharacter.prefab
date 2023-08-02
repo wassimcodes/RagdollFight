@@ -868,7 +868,6 @@ MonoBehaviour:
   Doll: {fileID: 5202049453692133495}
   dollTransform: {fileID: 8196293877843576946}
   rotationSpeed: 0.15
-  leaveCoverDelay: 0.1
   coverSpeedX: -3
   coverSpeedZ: 20
   isHorizontalOrigin: 0
@@ -906,7 +905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRolling: 0
   rollKey: 306
-  rollDuration: 0.4
+  rollDuration: 0.45
   coolDownRoll: 1
   rollSpeed: 10
   canRoll: 0

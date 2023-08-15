@@ -18,6 +18,9 @@ public class HotbarManager : MonoBehaviour
 
     [Header("animators")]
     [SerializeField] private Animator slotNumAnimator;
+
+    [Header("Ammo Management")]
+    [SerializeField] private GameObject PistolIocn;
     void Start()
     {
         

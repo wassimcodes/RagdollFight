@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour
@@ -9,7 +10,6 @@ public class PlayerAnimController : MonoBehaviour
     void Start()
     {
         playerAnimator = gameObject.GetComponentInChildren<Animator>();
-         
     }
 
     // Update is called once per frame
@@ -25,10 +25,16 @@ public class PlayerAnimController : MonoBehaviour
 
         //aim animation
         bool isPlayerAiming = Aim.AimScript.isRotatingTowardsMouse;
-        if (isPlayerAiming)
+        bool isHoldingPistol = GunsControl.gunsControlScript.playerHasPistol;
+        bool isHoldingAk = GunsControl.gunsControlScript.playerHasAk;
+
+        //holding pistol
+        if (isPlayerAiming && isHoldingPistol)
         {
             playerAnimator.SetBool("isPlayerAiming", true);
-            if ((PlayerMovement.PlayerMovementScript.isPlayerMoving))
+            playerAnimator.SetBool("isHoldingPistol", true);
+
+            if (PlayerMovement.PlayerMovementScript.isPlayerMoving)
             {
                 playerAnimator.SetBool("isPlayerMoving", true);
             }
@@ -40,6 +46,27 @@ public class PlayerAnimController : MonoBehaviour
         else
         {
             playerAnimator.SetBool("isPlayerAiming", false);
+            playerAnimator.SetBool("isHoldingPistol", false);
+        }
+
+        //holding Ak
+        if (isPlayerAiming && isHoldingAk)
+        {
+            playerAnimator.SetBool("isPlayerAiming", true);
+            playerAnimator.SetBool("isHoldingAk", true);
+            if (PlayerMovement.PlayerMovementScript.isPlayerMoving)
+            {
+                playerAnimator.SetBool("isPlayerMoving", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("isPlayerMoving", false);
+            }
+        }
+        else
+        {
+            playerAnimator.SetBool("isPlayerAiming", false);
+            playerAnimator.SetBool("isHoldingAk", false);
         }
     }
 
@@ -114,11 +141,9 @@ public class PlayerAnimController : MonoBehaviour
     void PlayerMovementAnim()
     {
         //switch between idle and run animations.
-        if (PlayerMovement.PlayerMovementScript.isPlayerMoving && !TakeCover.TakeCoverScript.isTakingCover && Aim.AimScript.isRotatingTowardsMouse == false)
+        if (PlayerMovement.PlayerMovementScript.isPlayerMoving && !TakeCover.TakeCoverScript.isTakingCover && !Aim.AimScript.isRotatingTowardsMouse)
         {
             playerAnimator.SetBool("isPlayerMoving", true);
-            
-
         }
         else
         {
